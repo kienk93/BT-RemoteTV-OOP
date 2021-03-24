@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote TV</title>
+</head>
+<body>
+<button type="button" id="1" onclick="DoiKenh()">Đổi Kênh Tivi</button>
+<button type="button" id="2" onclick="TangAmLuong ()">Volume Up Tivi</button>
+<button type="button" id="3" onclick="GiamAmLuong ()">Volume Down Tivi</button>
+<button type="button" id="4" onclick="TatTivi ()">Tắt Tivi</button>
+
+
+<script>
+    class RemoteTv {
+        name;
+
+        constructor(name) {
+            this.name = name;
+        }
+
+        ChangeChannelRemote() {
+            let a = parseInt(prompt('Nhập kênh muốn chuyển'));
+            Tivi.channel = a;
+
+            alert('Tivi chuyển đến kênh ' + a)
+        }
+
+        VolumeUpper() {
+            Tivi.volume++;
+            alert('Volume : ' + Tivi.volume)
+        }
+
+        VolumeDowner() {
+            Tivi.volume--;
+            alert('Volume : ' + Tivi.volume)
+        }
+
+    }
+
+    class Tivi {
+        channel;
+        volume;
+        status;
+
+        constructor(channel, volume, status) {
+            this.channel = channel;
+            this.volume = volume;
+            this.status = status;
+        }
+
+        VolumeUp() {
+            this.volume++;
+            alert('Volume Tivi : ' + this.volume)
+        }
+
+        VolumeDown() {
+            this.volume--;
+            alert('Volume Tivi : ' + this.volume)
+        }
+
+        TurnOn() {
+            alert('Tivi đang bật')
+            return (this.status = true);
+        }
+
+        TurnOff() {
+            alert('Tivi đang tắt')
+            return (this.status = false);
+        }
+
+        ChangeChannel(remote) {
+            remote.ChangeChannelRemote()
+        }
+
+
+    }
+
+    let remoteLG = new RemoteTv(' Điều khiển LG TV ')
+    let LGTiVi = new Tivi(4, 50,)
+
+    function DoiKenh() {
+        LGTiVi.TurnOn();
+        LGTiVi.ChangeChannel(remoteLG);
+    }
+
+    function TangAmLuong() {
+        LGTiVi.VolumeUp();
+    }
+
+    function GiamAmLuong() {
+        LGTiVi.VolumeDown()
+    }
+
+    function TatTivi() {
+        LGTiVi.TurnOff()
+    }
+
+
+</script>
+</body>
+
+</html>
